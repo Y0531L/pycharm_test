@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>主页</title>
+    <style>
+        .div{
+            width: auto;
+            height: auto;
+            margin: 20px auto;
+            position: relative;
+            border: 1px solid black;
+        }
+        .div3{
+            width: 600px;
+            height: 104px;
+            overflow: hidden;
+            background:burlywood;
+            /* left: 300px; */
+            border: 1px solid red;
+            margin: 0 auto;
+            
+        }
+        .div3 img{
+            display: block;
+            position: relative;
+            left: -650px;
+            
+
+        }
+        button{
+            margin: 0 auto;
+            /*float: center;*/
+        }
+        h1{
+            text-align: left;
+            width: auto;
+            background: darkslategray;
+            color: white;
+            font-weight: normal;
+        }
+        p{
+            text-indent: 2em;
+        }
+        h3:hover{
+            color: red;
+        }
+        .btn1{
+            background: burlywood;
+            position: absolute;
+            left: 200px;
+            top: 150px;
+        }
+        .btn2{
+            background:burlywood;
+            position: absolute;
+            right: 200px;
+            top: 150px;
+        }
+        #video{
+            width: 500px;
+            height: auto;
+            display: none;
+            margin: 0 auto;
+            background: red;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="div">
+        
+        <h1>&nbsp&nbsp欢迎来到YL主页</h1>
+            <button class="btn1" id="btn1"><<</button>
+                    <div class="div3" id="div3">
+        
+                        <img src="./movebar.png" alt="滚动条" id="movebar">
+                    </div>
+                    <button class="btn2" id="btn2">>></button>
+            <form action="" method="GET">
+                <label for="">用户名</label>
+                <input type="text">
+                <label for="">密码</label>
+                <input type="password">
+                <button type="submit">登录</button>
+                <button type="reset">重置</button>
+            </form>
+            <p>无限时空中，时光的洪流汇聚于同一片大陆。机关术与魔道肆虐，让世界面目全非。英雄，那些熟知的名字，不可思议的聚集在一起。抛却了过往荣光，遵循野心与欲望，随心所欲寻求力量，乃至彼此追逐杀戮。 而在一个又一个传奇的背后，召唤师的身影时隐时现，没错，他们，才是历史真正的创造者，生存或者毁灭，战争，似乎永无止境。</p>
+            <h3>
+                <a href="./image.html" target="_blank">>>>英雄图赏</a>
+            </h3>
+            <!-- <button id="btn"> -->
+                 <a href="./jian_jie.mp4" target="_blank">aaa</a>
+                <!--<a href="./title.bmp" target="_blank">-->
+            <button  id="btn">>>>简介视频</button>
+                <!-- </a> -->
+            <!-- </button> -->
+            <div id="video">
+                <video src="./jian_jie.mp4"  controls preload="metadata" >游戏介绍</video>
+            </div>
+        
+        
+        <!-- <iframe src="./image.html" name="myiframe"></iframe> -->
+        <!-- <audio id="bgMusic" src="./js/2.mp3" autoplay preload loop="loop"></audio> -->
+        
+    </div> 
+</body>
+<script src="./js/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+        $(function(){
+            $('#btn').click(function(){
+                $('#video').toggle()
+
+            })
+        })
+
+        window.onload = function () {
+                var oBtn = document.getElementById('btn');
+                var oMovebar = document.getElementById('movebar');
+                var oTimer = null;
+                var num = 0;
+                var speed = 3;
+                var oBtn1 = document.getElementById('btn1');
+                var oBtn2 = document.getElementById('btn2');
+                var oDiv3 = document.getElementById('div3');
+                oTimer = setInterval(fnMove,30)
+                // function fnqqq(){
+                //     alert('111111')
+                // }//测试函数
+                oDiv3.onmouseover = function(){
+                    clearInterval(oTimer);
+                    oTimer = null;
+                }
+                oDiv3.onmouseout = function(){
+                    oTimer = setInterval(fnMove, 30);
+                }
+                oBtn1.onclick = function(){
+                    speed = -3;
+                };
+                oBtn2.onclick = function () {
+                    speed = 3;
+                }
+                function fnMove(){
+                    num = num + speed;
+                    if(num > 0){
+                        num = -650;
+                    }
+                    if(num < -650){
+                        num = 0;
+                    } 
+                    oMovebar.style.left = num + 'px';
+                }
+
+
+                // oBtn.onclick = myalert;
+
+                // function myalert() {
+                //     alert('即将跳转到其他网站');
+                // }
+                // }
+        }
+
+</script>
+</html>
